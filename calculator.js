@@ -4,6 +4,45 @@ function multiply(){return a*b;}
 function sum(){return a + b;}
 
 
+// Typing numbers and updating screen
+document.querySelectorAll(".number")
+        .forEach((element) =>{
+            element.addEventListener("click", (event)=>{                
+                let node = event.target;
+
+                if (node.tagName == "P") {node.parentNode.classList.add("playing");}
+                else {node.classList.add("playing");}
+
+                if (node.tagName == "DIV") {node = node.firstElementChild;}
+
+                let digit = node.innerHTML;
+                let display_node = document.querySelector("#display-value");
+                let display_value = display_node.innerHTML;
+
+                // do nothing if:
+                if (display_value.includes(".") && digit == '.'){ return;}
+                if (parseFloat(display_value) == 0 && digit == '0'){ return;}
+                if (display_value == "" && digit == '.'){display_value = '0';}
+
+                display_node.innerHTML = display_value + digit;                
+            });
+
+            element.addEventListener('transitionend',(event) =>{
+                event.target.classList.remove("playing");
+            });
+        });
+
+document.querySelector("#clear")
+        .addEventListener("click", (e)=>{            
+            clear();
+        })
+
+
+function clear(){
+    document.querySelector("#display-value").innerHTML = "";
+    //TODO Clear cache
+}
+
 function updateScreen(){
     // select element
     // text <-- buffer
@@ -42,7 +81,7 @@ const OP = 0;
 const DIGIT = 1;
 const RESULT = 2;
 
-export const init_calculator = ()=>{
+const init_calculator = ()=>{
     let last = RESULT;
 
     //call calculate with parameters
@@ -52,9 +91,8 @@ export const init_calculator = ()=>{
     // 3333
 }
 
-export 
 
-export const calculate = (func) => {
+const calculate = (func) => {
 
     if (last == RESULT){ // a number is shown in the screen                        
         

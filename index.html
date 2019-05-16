@@ -12,14 +12,14 @@
 
 <body>
     <div class="container">
-        <div id="calculator">
+        <div id="calculator" class="noselect">
 
             <div class="display">
-                <div class="display-value"></div>
+                <div id="display-value"></div>
             </div>
 
             <div class="input">
-                <div class="button operator small">
+                <div id="clear" class="button operator small">
                     <p>CLR</p>
                 </div>
                 <div class="button operator small">
@@ -62,7 +62,7 @@
                 <div id="zero" class="button number">
                     <p>0</p>
                 </div>
-                <div id="dot" class="button small">
+                <div id="dot" class="button number small">
                     <p>.</p>
                 </div>
                 <div id="sum" class="button operator long-vertical">
@@ -76,7 +76,7 @@
 
     </div>
 
-
+    <script src="calculator.js"></script>
 </body>
 
 </html>
