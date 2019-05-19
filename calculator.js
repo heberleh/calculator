@@ -1,6 +1,6 @@
 
 
-// .......
+// .........
 
 const EQUAL = 0;
 const OPERATE = 1;
